@@ -2,7 +2,6 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         tasksCpu fileWrite = new tasksCpu();
         String cmd = "cpu";
         //Accedemos a la camtidad de nucleos para una futura caracteristica
