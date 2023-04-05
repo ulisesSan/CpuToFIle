@@ -4,28 +4,18 @@ import java.io.*;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) throws IOException {
-        String archivo = System.getProperty("user.home") + "/ToDoList.txt";
-        String output = "";
+        tasksCpu fileWrite = new tasksCpu();
         String cmd = "cpu";
+        int cores = Runtime.getRuntime().availableProcessors();
+        String output;
         // Press Shift+F10 or click the green arrow button in the gutter to run the code.
         try{
-            File file = new File(archivo.replace("\\", "/"));
-            if(file.exists() && !file.isDirectory()){
-                System.out.println("File Exists");
-            }else{
-                file.createNewFile();
-                System.out.println("File created succesfully");
-            }
-            FileWriter Writer = new FileWriter(archivo);
-            BufferedWriter bWriter = new BufferedWriter(Writer);
             Process job = Runtime.getRuntime().exec(cmd);
             BufferedReader input = new BufferedReader(new InputStreamReader(job.getInputStream()));
-            while ((output = input.readLine()) != null){
-                System.out.println(output);
-                bWriter.write(output);
-                //bWriter.close();
+            System.out.println(cores);
+            while ((output= input.readLine()) != null) {
+                fileWrite.writeFile(output, cores);
             }
-
         }catch(Exception e){
             System.out.println(e);
         }
