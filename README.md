@@ -1,2 +1,2 @@
 # CpuToFIle
-Show your cpu frequency and put it int your file
+This program only write a file with cpu freq
